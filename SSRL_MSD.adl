@@ -1,0 +1,278 @@
+
+file {
+	name="/home/specadm/adls/BL62.adl"
+	version=030118
+}
+display {
+	object {
+		x=1750
+		y=263
+		width=300
+		height=185
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+rectangle {
+	object {
+		x=-2
+		y=12
+		width=310
+		height=41
+	}
+	"basic attribute" {
+		clr=50
+	}
+}
+text {
+	object {
+		x=12
+		y=21
+		width=276
+		height=26
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="GSECARS ESP-300 test"
+	align="horiz. centered"
+}
+"related display" {
+	object {
+		x=13
+		y=93
+		width=75
+		height=25
+	}
+	display[0] {
+		label="Scan 1"
+		name="scan_more.adl"
+		args="P=13ESP:, S=scan1, N=1"
+	}
+	display[1] {
+		label="Scan 2"
+		name="scan_more.adl"
+		args="P=13ESP:, S=scan2, N=2"
+	}
+	clr=14
+	bclr=4
+}
+text {
+	object {
+		x=93
+		y=93
+		width=53
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	textix="Scan"
+}
+text {
+	object {
+		x=93
+		y=65
+		width=60
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	textix="Motors"
+}
+"related display" {
+	object {
+		x=13
+		y=65
+		width=75
+		height=25
+	}
+	display[0] {
+		label="Test motors"
+		name="8motors-Galil.adl"
+		args="P=BL62:DMC01:, TITLE=Galil DMC, M1=A, M2=B, M3=C, M4=D, M5=E, M6=F, M7=G, M8=H"
+	}
+	display[1] {
+		label="Andor Zyla"
+		name="Andor3.adl"
+		args="P=BL62:ANDOR3:, R=cam1:"
+	}
+	display[2] {
+		label="Gige Camera"
+		name="ADAravis.adl"
+		args="P=BL62:Cam01:,R=cam1:"
+	}
+	display[3] {
+		label="Galil controller"
+		name="galil_dmc_ctrl.adl"
+		args="DMC=BL62:DMC01:,M1=A,M2=B,M3=C,M4=D,M5=E,M6=F,M7=G,M8=H"
+	}
+	display[4] {
+		label="TomoScan"
+		name="tomoScan.adl"
+		args="P=BL62:tomoscan:,R=TS:,BEAMLINE=tomoScanStep_32ID"
+	}
+	display[5] {
+		label="fast shutter"
+		name="VCM_D1.adl"
+		args="P=BL62:vcmd1:,R=asyn1"
+	}
+	display[6] {
+		label="iXI4 driver"
+		name="4motors.adl"
+		args="P=BL62:iXI4:,TITLE=iXI4 Driver, M1=m1,M2=m2,M3=m3,M4=m4"
+	}
+	display[7] {
+		label="iXI4 pso"
+		name="tomoScan_pso.adl"
+		args="P=BL62:tomoscan:,R=TS:"
+	}
+	display[8] {
+		label="Picoammeter6487"
+		name="Keithley6487.adl"
+		args="P=BL62:K6487:,R=1:"
+	}
+	display[9] {
+		label="mono"
+		name="1motors.adl"
+		args="P=BL62:DMC02:,TITLE=Mono, M1=A"
+	}
+	display[10] {
+		label="mono Galil"
+		name="galil_dmc_ctrl.adl"
+		args="DMC=BL62:DMC02:,M1=A"
+	}
+	clr=14
+	bclr=4
+}
+"related display" {
+	object {
+		x=13
+		y=120
+		width=75
+		height=25
+	}
+	display[0] {
+		label="asyn record"
+		name="asynRecord.adl"
+		args="P=13ESP:, R=asyn1"
+	}
+	clr=14
+	bclr=4
+}
+text {
+	object {
+		x=93
+		y=148
+		width=133
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="IOC status"
+}
+"related display" {
+	object {
+		x=13
+		y=148
+		width=75
+		height=25
+	}
+	display[0] {
+		label="Save/restore status"
+		name="save_restoreStatus_more.adl"
+		args="P=13ESP:"
+	}
+	clr=14
+	bclr=4
+}
+text {
+	object {
+		x=93
+		y=120
+		width=133
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="asyn Records"
+}
