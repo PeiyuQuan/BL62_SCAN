@@ -10,7 +10,7 @@ def scan_rotation_stage(start, step, points, mono, file_name):
     crystal_1 = epics.PV("BL62:DMC02:A.VAL")
     m1 = 2*dspacing*mono
     crystal = math.asin(hc/m1)
-    angle_crystal=int((180.0*crystal/math.pi) * 1000)/1000.0
+    angle_crystal=float(180.0*crystal/math.pi)
     crystal_1.put(angle_crystal, wait=True)
     rotation_stage = epics.PV("BL62:DMC01:D.VAL")
     a=[]
