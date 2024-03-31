@@ -17,6 +17,7 @@ def scan_energy_1_range(start, step, points, file_name, exposure_time):
     h=[]
     n=[]
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exposure_time, wait=True)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
@@ -41,7 +42,8 @@ def scan_energy_1_range(start, step, points, file_name, exposure_time):
         for m in range(i,len(a)):
             f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
-    time.sleep(.5)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
+    epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
     x=a
     y=b
     plt.plot(x,y,marker="o", ms=6)
@@ -63,6 +65,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name,
     h=[]
     n=[]
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exposure_time, wait=True)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
@@ -104,7 +107,8 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name,
         for m in range(i+points,len(a)):
             f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
-    time.sleep(1)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
+    epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
     x=a
     y=b
     plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
@@ -126,6 +130,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
     h=[]
     n=[]
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exposure_time, wait=True)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
@@ -184,7 +189,8 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
         for m in range(i+points+points1,len(a)):
             f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
-    time.sleep(1)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
+    epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
     x=a
     y=b
     plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
@@ -206,6 +212,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
     h=[]
     n=[]
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exposure_time, wait=True)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
@@ -281,6 +288,8 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         for m in range(i+points+points1+points2,len(a)):
             f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
+    epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
     x=a
     y=b
     plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
