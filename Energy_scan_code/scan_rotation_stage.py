@@ -21,6 +21,7 @@ def scan_rotation_stage(start, step, points, mono, file_name):
     h=[]
     n=[]
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
     init_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)
@@ -41,7 +42,8 @@ def scan_rotation_stage(start, step, points, mono, file_name):
         for m in range(i,len(a)):
             f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
-    time.sleep(1)
+    epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
+    epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
     x=a
     y=b
     plt.plot(x,y,marker="o")
