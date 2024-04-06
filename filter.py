@@ -4,7 +4,7 @@ def filter_number(n):
     epics.PV("BL62:E1608_1:Bo1").put("Low", wait=True)
     epics.PV("BL62:E1608_1:Bo2").put("Low", wait=True)
     epics.PV("BL62:E1608_1:Bo3").put("Low", wait=True)
-    epics.PV("BL62:E1608_1:Bd4").put("In", wait=True)
+    epics.PV("BL62:E1608_1:Bo4").put("Low", wait=True)
     
     if n<16:
         if n==0:
