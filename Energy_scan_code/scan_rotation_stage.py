@@ -20,13 +20,14 @@ def scan_rotation_stage(start, step, points, mono, file_name):
     e=[]
     h=[]
     n=[]
+    J=[]
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Fixed',wait=True)
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:EnableCallbacks").put('Enable',wait=True)
     epics.PV("BL62:ANDOR3:ROIStat1:1:Use").put('Yes',wait=True)
     init_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)
     f = open(file_name, "a")
-    f.write("#\timage_name\timage_number\trotation_angle\tintensity\texposure_time\renergy\n")
+    f.write("#\timage_name\timage_number\tI0(amps)\trotation_angle\tintensity\texposure_time\renergy\n")
     for i in range(0, points):
         stage_position = start + step*i
         a.append(stage_position)
@@ -37,10 +38,11 @@ def scan_rotation_stage(start, step, points, mono, file_name):
         e.append(epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True))
         epics.PV("BL62:ANDOR3:cam1:Acquire").put('Acquire',wait=True)
         time.sleep(.5)
+        J.append(epics.PV("BL62:K6487:1:Measure").get(as_numpy=True))
         b.append(epics.PV("BL62:ANDOR3:ROIStat1:1:Total_RBV").get(as_numpy=True))
         h.append(mono)
         for m in range(i,len(a)):
-            f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
+            f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], J[m],a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
@@ -52,4 +54,3 @@ def scan_rotation_stage(start, step, points, mono, file_name):
     plt.ylabel('Intensity from camera ROI')
     plt.show()
     rotation_stage.put(0, wait=True)
-    
