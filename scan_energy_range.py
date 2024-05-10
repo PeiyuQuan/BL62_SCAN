@@ -251,7 +251,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             crystal = math.asin(hc/m1)
             angle_crystal=float(180.0*crystal/math.pi)
             crystal_1.put(angle_crystal, wait=True)
-            Linear_Base.put(5, wait=True)
+            Linear_Base.put(off_sample, wait=True)
             n.append(i+points+1)
             a.append(mono)
             c.append(epics.PV("BL62:ANDOR3:cam1:AcquireTime_RBV").get(as_numpy=True))
