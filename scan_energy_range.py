@@ -125,6 +125,11 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
     epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
     epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
     time.sleep(0.5)
+    epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
+    time.sleep(0.5)
+    epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
+    epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
+    time.sleep(0.5)
     hc = 12398.4244
     dspacing = 3.1356
     crystal_1 = epics.PV("BL62:DMC02:A.VAL")
@@ -297,6 +302,11 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
 
 
 def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, step2, points2, off_sample,file_name, exposure_time):
+    epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
+    time.sleep(0.5)
+    epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
+    epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
+    time.sleep(0.5)
     epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
     time.sleep(0.5)
     epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
@@ -543,6 +553,11 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
 
 
 def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, step2, points2, start3 , step3, points3, off_sample,file_name, exposure_time):
+    epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
+    time.sleep(0.5)
+    epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
+    epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
+    time.sleep(0.5)
     epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
     time.sleep(0.5)
     epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
