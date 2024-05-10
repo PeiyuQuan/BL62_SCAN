@@ -13,7 +13,7 @@ def scan_energy_1_range(start, step, points, file_name, off_sample,exposure_time
     time.sleep(0.5)
     hc = 12398.4244
     dspacing = 3.1356
-    crystal_1 = epics.PV("BL62:DMC01:B.VAL")
+    crystal_1 = epics.PV("BL62:DMC02:A.VAL")
     Linear_Base = epics.PV("BL62:DMC01:A.VAL")
     a=[]
     b=[]
@@ -279,6 +279,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points)+1,len(a)):
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))  
+    f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
@@ -525,6 +526,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1)+1,len(a)):
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m])) 
+    f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
@@ -545,7 +547,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
     time.sleep(0.5)
     hc = 12398.4244
     dspacing = 3.1356
-    crystal_1 = epics.PV("BL62:DMC01:B.VAL")
+    crystal_1 = epics.PV("BL62:DMC02:A.VAL")
     Linear_Base = epics.PV("BL62:DMC01:A.VAL")
     a=[]
     b=[]
@@ -840,6 +842,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1+points2)+1,len(a)):
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m])) 
+    f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
@@ -850,4 +853,3 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
     plt.ylabel('Intensity from camera ROI')
     plt.plot(x,y,marker="o", ms=6)
     plt.show()
-    
