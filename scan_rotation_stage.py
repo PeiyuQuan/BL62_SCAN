@@ -4,19 +4,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 
-def set_zero():
-    epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
-    time.sleep(0.5)
-    epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
-    epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
-    time.sleep(0.5)
-    
 def scan_rotation_stage(start, step, points, mono, off_sample,file_name,Image_Num,bg_exp_time,exp_time):
-    epics.PV("BL62:DMC01:A.SET").put('Set',wait=True)
-    time.sleep(0.5)
-    epics.PV("BL62:DMC01:A.VAL").put(0, wait=True)
-    epics.PV("BL62:DMC01:A.SET").put('Use',wait=True)
-    time.sleep(0.5)
     hc = 12398.4244
     dspacing = 3.1356
     m1 = 2*dspacing*mono
@@ -50,9 +38,10 @@ def scan_rotation_stage(start, step, points, mono, off_sample,file_name,Image_Nu
     x2.append(epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True))
     epics.PV("BL62:ANDOR3:cam1:NumImages").put(Image_Num,wait=True)
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(bg_exp_time, wait=True)
+    time.sleep(0.2)
     epics.PV("BL62:ANDOR3:cam1:Acquire").put('Acquire',wait=True)
     f = open(file_name, "a")
-    f.write("image_name\timage_number\tlinear_position\tImage_Num\tintensity\texposure_time\tenergy\n")
+    f.write("image_name\timage_number\toff_sample\tImage_Num\tintensity\texposure_time\tenergy\n")
     x1.append(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True))
     x3.append(off_sample)
     x4.append(epics.PV("BL62:ANDOR3:cam1:NumImages_RBV").get(as_numpy=True))
@@ -62,6 +51,7 @@ def scan_rotation_stage(start, step, points, mono, off_sample,file_name,Image_Nu
     f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(x1[0], x2[0], x3[0], x4[0], x5[0],x6[0],x7[0]))
     Linear_Base.put(0, wait=True)
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exp_time, wait=True)
+    epics.PV("BL62:ANDOR3:cam1:NumImages").put(1,wait=True)
     f = open(file_name, "a")
     f.write("#\timage_name\timage_number\trotation_angle\tintensity\texposure_time\tenergy\n")
     for i in range(0, points):
@@ -70,7 +60,6 @@ def scan_rotation_stage(start, step, points, mono, off_sample,file_name,Image_Nu
         n.append(i+1)
         rotation_stage.put(stage_position, wait=True)
         c.append(epics.PV("BL62:ANDOR3:cam1:AcquireTime_RBV").get(as_numpy=True))
-        epics.PV("BL62:ANDOR3:cam1:NumImages").put(1,wait=True)
         d.append(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True))
         e.append(epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True))
         epics.PV("BL62:ANDOR3:cam1:Acquire").put('Acquire',wait=True)
@@ -84,9 +73,10 @@ def scan_rotation_stage(start, step, points, mono, off_sample,file_name,Image_Nu
     Linear_Base.put(off_sample, wait=True)
     epics.PV("BL62:ANDOR3:cam1:NumImages").put(Image_Num,wait=True)
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(bg_exp_time, wait=True)
+    time.sleep(0.2)
     epics.PV("BL62:ANDOR3:cam1:Acquire").put('Acquire',wait=True)
     f = open(file_name, "a")
-    f.write("image_name\timage_number\tlinear_position\tImage_Num\tintensity\texposure_time\tenergy\n")
+    f.write("image_name\timage_number\toff_sample\tImage_Num\tintensity\texposure_time\tenergy\n")
     x1.append(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True))
     x3.append(off_sample)
     x4.append(epics.PV("BL62:ANDOR3:cam1:NumImages_RBV").get(as_numpy=True))
