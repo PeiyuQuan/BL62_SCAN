@@ -84,57 +84,57 @@ while True:
         window[f'-COL{layout}-'].update(visible=True)
     
     if event=='GO' and layout==1:
-        start=values['start1']
-        step=values['step1']
-        points=values['points1']
+        start=float(values['start1'])
+        step=float(values['step1'])
+        points=int(values['points1'])
         file_name=values['filename']
-        off_sample=values['offsample']
-        exposure_time=values['exposure']
+        off_sample=float(values['offsample'])
+        exposure_time=float(values['exposure'])
         scan_energy_1_range(start, step, points, file_name, off_sample,exposure_time)
     
     if event=='GO' and layout==2:
-        start=values['start1']
-        step=values['step1']
-        points=values['points1']
-        start1=values['start2']
-        step1=values['step2']
-        points1=values['points2']
+        start=float(values['start1'])
+        step=float(values['step1'])
+        points=int(values['points1'])
+        start1=float(values['start2'])
+        step1=float(values['step2'])
+        points1=int(values['points2'])
         file_name=values['filename']
-        off_sample=values['offsample']
-        exposure_time=values['exposure']
+        off_sample=float(values['offsample'])
+        exposure_time=float(values['exposure'])
         scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample,file_name, exposure_time)
 
     if event=='GO'and layout==3:
-        start=values['start1']
-        step=values['step1']
-        points=values['points1']
-        start1=values['start2']
-        step1=values['step2']
-        points1=values['points2']
-        start2=values['start3']
-        step2=values['step3']
+        start=float(values['start1'])
+        step=float(values['step1'])
+        points=int(values['points1'])
+        start1=float(values['start2'])
+        step1=float(values['step2'])
+        points1=int(values['points2'])
+        start2=float(values['start3'])
+        step2=float(values['step3'])
         points2=values['points3']
         file_name=values['filename']
-        off_sample=values['offsample']
-        exposure_time=values['exposure']
+        off_sample=float(values['offsample']0
+        exposure_time=float(values['exposure'])
         scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, step2, points2, off_sample,file_name, exposure_time)
     
     if event=='GO' and layout==4:
-        start=values['start1']
-        step=values['step1']
-        points=values['points1']
-        start1=values['start2']
-        step1=values['step2']
-        points1=values['points2']
-        start2=values['start3']
-        step2=values['step3']
-        points2=values['points3']
-        start3=values['start4']
-        step3=values['step4']
-        points3=values['points4']
+        start=float(values['start1'])
+        step=float(values['step1'])
+        points=int(values['points1'])
+        start1=float(values['start2'])
+        step1=float(values['step2'])
+        points1=int(values['points2'])
+        start2=float(values['start3'])
+        step2=float(values['step3'])
+        points2=int(values['points3'])
+        start3=float(values['start4'])
+        step3=float(values['step4'])
+        points3=int(values['points4'])
         file_name=values['filename']
-        off_sample=values['offsample']
-        exposure_time=values['exposure']
+        off_sample=float(values['offsample'])
+        exposure_time=float(values['exposure'])
         scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, step2, points2, start3 , step3, points3, off_sample,file_name, exposure_time)  
 		
 window.close()
