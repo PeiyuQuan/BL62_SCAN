@@ -65,6 +65,13 @@ def scan_energy_1_range(start, step, points, file_name, off_sample,exposure_time
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
         if i%2==1:
             mono = start + step*i
             m1 = 2*dspacing*mono
@@ -100,16 +107,23 @@ def scan_energy_1_range(start, step, points, file_name, off_sample,exposure_time
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
     f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
-    x=a
-    y=b
-    plt.plot(x,y,marker="o", ms=6)
-    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
-    plt.xlabel('energy')
-    plt.ylabel('Intensity from camera ROI')
+#    x=a
+#    y=b
+#    plt.plot(x,y,marker="o", ms=6)
+#    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+#    plt.xlabel('energy')
+#    plt.ylabel('Intensity from camera ROI')
     plt.show()
     Linear_Base.put(0, wait=True)
 
@@ -158,6 +172,14 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -173,6 +195,13 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
         if i%2==1:
             mono = start + step*i
             m1 = 2*dspacing*mono
@@ -194,6 +223,13 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
             Linear_Base.put(0, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -208,7 +244,14 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
     for i in range(0, points1):
         if i%2==0:
             mono = start1 + step1*i
@@ -231,6 +274,13 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
             Linear_Base.put(off_sample, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -246,6 +296,13 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
         if i%2==1:
             mono = start1 + step1*i
             m1 = 2*dspacing*mono
@@ -267,6 +324,13 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
             Linear_Base.put(0, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -281,17 +345,24 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, off_sample
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
     f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
-    x=a
-    y=b
-    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
-    plt.plot(x,y,marker="o", ms=6)
-    plt.xlabel('energy')
-    plt.ylabel('Intensity from camera ROI')
+#    x=a
+#    y=b
+#    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+#    plt.plot(x,y,marker="o", ms=6)
+#    plt.xlabel('energy')
+#    plt.ylabel('Intensity from camera ROI')
     plt.show()
     Linear_Base.put(0, wait=True)
 
@@ -340,6 +411,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -355,6 +434,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start + step*i
             m1 = 2*dspacing*mono
@@ -376,6 +463,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -390,7 +485,15 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     for i in range(0, points1):
         if i%2==0:
             mono = start1 + step1*i
@@ -413,6 +516,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -428,6 +539,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start1 + step1*i
             m1 = 2*dspacing*mono
@@ -449,6 +568,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -463,7 +590,15 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     for i in range(0, points2):    
         if i%2==0:
             mono = start2 + step2*i
@@ -485,7 +620,15 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m])
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1+points+points1)
             a.append(mono)
@@ -501,6 +644,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start2 + step2*i
             m1 = 2*dspacing*mono
@@ -522,6 +673,14 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+1+points+points1)
             a.append(mono)
@@ -536,17 +695,25 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
-    x=a
-    y=b
-    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
-    plt.plot(x,y,marker="o", ms=6)
-    plt.xlabel('energy')
-    plt.ylabel('Intensity from camera ROI')
+#    x=a
+#    y=b
+#    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+#    plt.plot(x,y,marker="o", ms=6)
+#    plt.xlabel('energy')
+#    plt.ylabel('Intensity from camera ROI')
     plt.show()
     Linear_Base.put(0, wait=True)
 
@@ -595,6 +762,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -610,6 +785,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start + step*i
             m1 = 2*dspacing*mono
@@ -631,6 +814,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*i,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+1)
             a.append(mono)
@@ -645,7 +836,15 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*i+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     for i in range(0, points1):
         if i%2==0:
             mono = start1 + step1*i
@@ -668,6 +867,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -683,6 +890,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start1 + step1*i
             m1 = 2*dspacing*mono
@@ -704,6 +919,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+points+1)
             a.append(mono)
@@ -718,7 +941,15 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))  
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     for i in range(0, points2):    
         if i%2==0:
             mono = start2 + step2*i
@@ -741,6 +972,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1+points+points1)
             a.append(mono)
@@ -756,6 +995,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start2 + step2*i
             m1 = 2*dspacing*mono
@@ -777,6 +1024,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+1+points+points1)
             a.append(mono)
@@ -791,7 +1046,15 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))                
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m])) 
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     for i in range(0, points3):
         if i%2==0:
             mono = start3 + step3*i
@@ -814,6 +1077,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1+points2),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(off_sample, wait=True)
             n.append(i+1+points+points1+points2)
             a.append(mono)
@@ -829,6 +1100,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1+points2)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m], d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
         if i%2==1:
             mono = start3 + step3*i
             m1 = 2*dspacing*mono
@@ -850,6 +1129,14 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             for m in range(2*(i+points+points1+points2),len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
                 f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m],b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
             Linear_Base.put(0, wait=True)
             n.append(i+1+points+points1+points2)
             a.append(mono)
@@ -864,16 +1151,24 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
             k.append(epics.PV("BL62:DMC01:A.RBV").get(as_numpy=True))
             for m in range(2*(i+points+points1+points2)+1,len(a)):
 #                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m],k[m], d[m], e[m], a[m], J[m],b[m], c[m], h[m]))
-                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m])) 
+                f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], k[m],d[m], e[m], a[m], b[m], c[m], h[m]))
+            x=a
+            y=b
+            plt.plot(x,y,marker="o", ms=6)
+            plt.pause(0.05)
+            plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+            plt.xlabel('energy')
+            plt.ylabel('Intensity from camera ROI')
+            
     f.write("------------------------------------------------------------------------------------------------------------------------------------\n")
     fina_image_number= epics.PV("BL62:ANDOR3:TIFF1:FileNumber_RBV").get(as_numpy=True)-1
     epics.PV("BL62:ANDOR3:TIFF1:EnableCallbacks").put('Disable',wait=True)
     epics.PV("BL62:ANDOR3:cam1:ImageMode").put('Continuous',wait=True)
-    x=a
-    y=b
-    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
-    plt.xlabel('energy')
-    plt.ylabel('Intensity from camera ROI')
-    plt.plot(x,y,marker="o", ms=6)
+#    x=a
+#    y=b
+#    plt.title(epics.PV("BL62:ANDOR3:TIFF1:FileName_RBV").get(as_string=True)+" "+"scan #"+str(init_image_number)+"~"+str(fina_image_number))
+#    plt.xlabel('energy')
+#    plt.ylabel('Intensity from camera ROI')
+#    plt.plot(x,y,marker="o", ms=6)
     plt.show()
     Linear_Base.put(0, wait=True)
