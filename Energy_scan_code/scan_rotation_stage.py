@@ -48,7 +48,7 @@ def scan_rotation_stage(start, step, points, mono, off_sample, file_name, image_
         x6.append(epics.PV("BL62:ANDOR3:cam1:AcquireTime_RBV").get(as_numpy=True))
         x7.append(mono)
         f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(x1[0], x2[0], x3[0], x4[0], x5[0], x6[0], x7[0]))
-    Linear_Base.put(0, wait=True)
+    linear_Base.put(0, wait=True)
     epics.PV("BL62:ANDOR3:cam1:AcquireTime").put(exp_time, wait=True)
     epics.PV("BL62:ANDOR3:cam1:NumImages").put(1, wait=True)
     f = open(file_name, "a")
