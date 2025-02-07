@@ -140,7 +140,7 @@ while True:
         points = int(values['-points5-'])
         mono = float(values['-mono5-'])
         off_sample = float(values['-off_sample5-'])
-        file_name = values['filename5']
+        file_name = values['-filename5-']
         Image_Num = int(values['-image_num5-'])
         bg_exp_time = float(values['-bg_exp5-'])
         exp_time = float(values['-exp5-'])
