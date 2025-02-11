@@ -59,8 +59,8 @@ layout3 = [
     [sg.Text("file_name", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-filename3-')],
     [sg.Text("off_sample", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-off_sample3-'),
      sg.Text("mm")],
-    {sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure3-'),
-     sg.Text("s")}
+    [sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure3-'),
+     sg.Text("s")]
 ]
 
 layout4 = [
@@ -88,8 +88,8 @@ layout4 = [
     [sg.Text("file_name", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-filename4-')],
     [sg.Text("off_sample", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-off_sample4-'),
      sg.Text("mm")],
-    {sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure4-'),
-     sg.Text("s")}
+    [sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure4-'),
+     sg.Text("s")]
 ]
 
 layout_E = [
