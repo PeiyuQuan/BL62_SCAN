@@ -94,8 +94,8 @@ layout4 = [
 
 layout_E = [
     [sg.Text('scan energy range'), sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('4'), sg.Text("ranges")],
-    [sg.Column(layout1, key='-COL1-'), sg.Column(layout2, visible=False, key='-COL2-')],
-    [sg.Column(layout3, visible=False, key='-COL3-'), sg.Column(layout4, visible=False, key='-COL4-')],
+    [sg.Column(layout1, key='-COL1-'), sg.Column(layout2, visible=False, key='-COL2-'),
+    sg.Column(layout3, visible=False, key='-COL3-'), sg.Column(layout4, visible=False, key='-COL4-')],
     [sg.Button('GO'), sg.Button('Exit')]
 ]
 
