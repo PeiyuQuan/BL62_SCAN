@@ -93,6 +93,7 @@ layout4 = [
 ]
 
 layout_E = [
+    [sg.Text('Scanning Energy',font=('Calibri',14),expand_x=True,justification='center')],
     [sg.Text('scan energy range'), sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('4'), sg.Text("ranges")],
     [sg.Column(layout1, key='-COL1-'), sg.Column(layout2, visible=False, key='-COL2-'),
     sg.Column(layout3, visible=False, key='-COL3-'), sg.Column(layout4, visible=False, key='-COL4-')],
@@ -100,6 +101,7 @@ layout_E = [
 ]
 
 layout_S = [
+    [sg.Text('Scanning Rotation stage',font=('Calibri',14),expand_x=True,justification='center')],
     [sg.Text("Start_position", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-start5-'),
      sg.Text("eV")],
     [sg.Text("Step", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-step5-'), sg.Text("eV")],
