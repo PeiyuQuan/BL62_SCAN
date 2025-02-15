@@ -19,7 +19,7 @@ layout1 = [
     [sg.Text("off_sample", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-off_sample-'),
      sg.Text("mm")],
     [sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure-'),
-     sg.Text("s")]
+     sg.Text("s")],
 ]
 
 layout2 = [
@@ -60,7 +60,7 @@ layout3 = [
     [sg.Text("off_sample", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-off_sample3-'),
      sg.Text("mm")],
     [sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure3-'),
-     sg.Text("s")]
+     sg.Text("s")],
 ]
 
 layout4 = [
@@ -89,7 +89,7 @@ layout4 = [
     [sg.Text("off_sample", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-off_sample4-'),
      sg.Text("mm")],
     [sg.Text("exposure_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exposure4-'),
-     sg.Text("s")]
+     sg.Text("s")],
 ]
 
 layout_E = [
@@ -97,7 +97,7 @@ layout_E = [
     [sg.Text('scan energy range'), sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('4'), sg.Text("ranges")],
     [sg.Column(layout1, key='-COL1-'), sg.Column(layout2, visible=False, key='-COL2-'),
     sg.Column(layout3, visible=False, key='-COL3-'), sg.Column(layout4, visible=False, key='-COL4-')],
-    [sg.Button('GO'), sg.Button('Close')]
+    [sg.Button('GO'), sg.Button('Close')],
 ]
 
 layout_S = [
@@ -115,12 +115,12 @@ layout_S = [
     [sg.Text("Back_exp_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-bg_exp5-'),
      sg.Text("s")],
     [sg.Text("exp_time", size=(13, 1), justification='center'), sg.Input(size=(15, 200), key='-exp5-'), sg.Text("s")],
-    [sg.Button('Run'), sg.Button('Exit')]
+    [sg.Button('Run'), sg.Button('Exit')],
 ]
 
 layout = [
     [sg.Button('scan energy', key='-se-'), sg.Button('scan sample', key='-ss-')],
-    [sg.Column(layout_S, key='-s-', visible=True), sg.Column(layout_E, key='-e-', visible=False)]
+    [sg.Column(layout_S, key='-s-', visible=True), sg.Column(layout_E, key='-e-', visible=False)],
 ]
 
 window = sg.Window('Scanning Experiments', layout)
@@ -147,6 +147,7 @@ while True:
         bg_exp_time = float(values['-bg_exp5-'])
         exp_time = float(values['-exp5-'])
         scan_rotation_stage(start, step, points, mono, off_sample, file_name, Image_Num, bg_exp_time, exp_time)
+        
     if event == '-se-':
         window['-s-'].update(visible=False)
         window['-e-'].update(visible=True)
